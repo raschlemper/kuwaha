@@ -15,19 +15,7 @@
         "angular-ui-router": "~0.2.10",
         "angular-translate": "~2.7.2",
         "font-awesome": ">=4.1.0",
-        "bootswatch": "~3.3.4",
         "underscore": "~1.7.0",
-        "lodash": "~2.4.1",
-        "angular-dropzone": "*",
-        "angular-strap": "~2.2.4",
-        "ng-file-upload": "~5.0.9",
-        "hashids": "1.0.0",
-        "spinkit": "*",
-        "angular-promise-tracker": "*",
-        "pixeden-stroke-7-icon": "1.2.3",
-        "animate.css": "*",
-        "metisMenu": "2.2.0",
-        "icheck": "1.0.2"
     },
     "authors": [
         "rafael.schlemper <teratec.company@gmail.com>"
