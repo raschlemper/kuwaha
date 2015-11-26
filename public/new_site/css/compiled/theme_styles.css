@@ -135,9 +135,9 @@ a:hover, a:focus {
 	margin-top: 0;
 	margin-bottom: 0;
 	position: relative;
-	min-height: 1200px;
+	/*min-height: 1200px;*/
 	padding: 15px 15px 35px 15px;
-	margin-left: 220px;
+	/*margin-left: 220px;*/
 }
 @media (max-width:991px) {
 	#content-wrapper {
@@ -1083,7 +1083,7 @@ h1 small, h2 small, h3 small, h1 .small, h2 .small, h3 .small {
 	line-height: 36px;
 	margin-left: -15px;
 	margin-right: -15px;
-	position: absolute;
+	/*position: absolute;*/
 	width: 100%;
 }
 @media (max-width:767px) {
