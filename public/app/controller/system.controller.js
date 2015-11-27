@@ -1,6 +1,9 @@
 'use strict';
 
-app.controller('SystemCtrl', function($scope, $stateParams, UserService, UserBuilder, LISTS) {
+app.controller('SystemCtrl', function($scope, $stateParams, SystemService, SystemBuilder, LISTS) {
+
+    var index;
+    var colors;
 
     var init = function() {
         $scope.systems = [];
@@ -19,40 +22,40 @@ app.controller('SystemCtrl', function($scope, $stateParams, UserService, UserBui
     };
 
     $scope.getAllSystems = function() {
-        $scope.users = [];
-        SystemService.allUsers()
+        $scope.systems = [];
+        SystemService.allSystems()
             .then(function(data) {
-                builderUser(data);
+                builderSystem(data);
             })
             .catch(function() {
                 $scope.msg.error = 'MSG.USER.SEARCH.ERROR';                
             });
     };
 
-    $scope.getUser = function() {        
-        $scope.user = UserBuilder.createUserDefault();
-        if (!$stateParams.idUser) return;
-        UserService.getUser($stateParams.idUser)
+    $scope.getSystem = function() {        
+        $scope.system = SystemBuilder.createSystemDefault();
+        if (!$stateParams.idSystem) return;
+        SystemService.getSystem($stateParams.idSystem)
             .then(function(data) {
-                $scope.user = UserBuilder.createUser(data, null);
+                $scope.system = SystemBuilder.createSystem(data, null);
             })
             .catch(function() {
                 $scope.msg.error = 'MSG.USER.SEARCH.ERROR';
             });
     };
 
-    $scope.saveUser = function(form) {  
+    $scope.saveSystem = function(form) {  
         $scope.submitted = true;
         if (form.$valid) {   
-            if(!$scope.user.id) { createUser(form); } 
-            else { updateUser(form); }            
+            if(!$scope.system.id) { createSystem(form); } 
+            else { updateSystem(form); }            
         } else {
             $scope.msg.error = 'MSG.EXISTS.INCORRET.DATA';
         }
     };
 
-    var createUser = function(form) {  
-        UserService.createUser($scope.user)
+    var createSystem = function(form) {  
+        SystemService.createSystem($scope.system)
             .then(function(data) {
                 resetForm(form, null);
                 $scope.msg.success = 'MSG.USER.CREATE.SUCCESS';                
@@ -62,8 +65,8 @@ app.controller('SystemCtrl', function($scope, $stateParams, UserService, UserBui
             });        
     };
 
-    var updateUser = function(form) {  
-        UserService.updateUser($scope.user)
+    var updateSystem = function(form) {  
+        SystemService.updateSystem($scope.system)
             .then(function(data) {
                 resetForm(form, data);
                 $scope.msg.success = 'MSG.USER.UPDATE.SUCCESS';                
@@ -74,8 +77,8 @@ app.controller('SystemCtrl', function($scope, $stateParams, UserService, UserBui
         
     };
 
-    $scope.removeUser = function(id) {
-        UserService.removeUser(id)
+    $scope.removeSystem = function(id) {
+        SystemService.removeSystem(id)
             .then(function(data) {
                 init(); 
                 $scope.msg.success = 'MSG.USER.REMOVE.SUCCESS';                
@@ -85,11 +88,11 @@ app.controller('SystemCtrl', function($scope, $stateParams, UserService, UserBui
             });
     };
 
-    var builderUser = function(users) {
-        $scope.users = _.map(users, function(user) {
-            var user = UserBuilder.createUser(user);
-            user.color = getColor();
-            return user;
+    var builderSystem = function(systems) {
+        $scope.systems = _.map(systems, function(system) {
+            var system = SystemBuilder.createSystem(system);
+            system.color = getColor();
+            return system;
         })
     };
 

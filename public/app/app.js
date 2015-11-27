@@ -18,8 +18,13 @@ var app = angular.module('kuwaha', [
         $stateProvider
             .state('home', {
                 url: '/',
-                templateUrl: 'view/main.html',
-                controller: 'MainCtrl'
+                templateUrl: 'view/system.html',
+                controller: 'SystemCtrl'
+            })
+            .state('systems', {
+                url: '/',
+                templateUrl: 'view/system.html',
+                controller: 'SystemCtrl'
             })
             .state('users', {
                 url: '/users',
