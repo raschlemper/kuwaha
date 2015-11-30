@@ -7,13 +7,21 @@ app.factory('System', function() {
 		var system = {
 			id: null,
 			name: null,
-			description: null
+			description: null,
+			usersSize: null
 		}
 
-		system.create = function(obj) {
-			system.id = obj.id;
+		system.createWidget = function(obj) {
+			system.id = obj._id;
 			system.name = obj.name;
 			system.description = obj.description;
+			system.usersSize = getSizeNameUser(obj.users);
+		}
+
+		var getSizeNameUser = function(users) {
+			if(!users) return '0 Usuários ';
+			if(users.length > 1) { return users.length + ' Usuários'; }
+			return '1 Usuário';
 		}
 
 		return system;

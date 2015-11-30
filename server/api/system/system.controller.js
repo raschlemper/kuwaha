@@ -8,7 +8,9 @@ var System = require('./system.model');
  * Get list of systems
  */
 exports.index = function(req, res, next) {
-    System.find({}, function(err, systems) {
+    System.find({})    
+    .deepPopulate('users.user')
+    .exec(function(err, systems) {
         if (err) return res.send(500, err);
         res.json(200, systems);
     });
@@ -19,7 +21,9 @@ exports.index = function(req, res, next) {
  */
 exports.show = function(req, res, next) {
     var systemId = req.params.id;
-    System.findById(systemId, function(err, system) {
+    System.findById(systemId) 
+    .deepPopulate('users.user')
+    .exec(function(err, system) {
         if (err) return res.send(500, err);
         if (!system) return res.send(401);
         res.json(200, system);

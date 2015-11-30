@@ -8,7 +8,7 @@ var User = require('../api/user/user.model');
 
 User.find({}).remove(function() {
     User.create({
-        //_id: '55b77647a8d5d3070db4e892',
+        _id: '55b77647a8d5d3070db4e892',
         name: 'Test',
         lastname: 'User',
         username: 'usertest',
@@ -16,7 +16,7 @@ User.find({}).remove(function() {
         gender: 'masculino',
         password: 'test'
     }, {
-        //_id: '55b77647a8d5d3070db4e893',
+        _id: '55b77647a8d5d3070db4e893',
         name: 'Rafael Augusto',
         lastname: 'Schlemper',
         username: 'raschlemper',

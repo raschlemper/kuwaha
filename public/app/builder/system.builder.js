@@ -7,14 +7,14 @@ app.factory('SystemBuilder', function(System, LISTS) {
 		return obj;
 	}
 
-	var createSystem = function(system) {
+	var createWidgetSystem = function(system) {
 		var obj = new System()
-		obj.create(system);
+		obj.createWidget(system);
 		return obj;
 	}
 
 	return {
 		createSystemDefault: createSystemDefault,
-		createSystem: createSystem
+		createWidgetSystem: createWidgetSystem
 	}
 });

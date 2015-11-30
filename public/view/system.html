@@ -1,18 +1,5 @@
 <div class="row">
     <div class="col-lg-12">
-        <div id="content-header" class="clearfix">
-            <div class="pull-left">
-                <ol class="breadcrumb">
-                    <li><a ui-route="home">Home</a></li>
-                    <li class="active"><span>Sistemas</span></li>
-                </ol>
-                <h1>Sistemas</h1>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
         <div class="row">
             <div class="col-lg-3 col-md-5 col-sm-6" ng-repeat="system in systems track by $index">
                 <div class="main-box clearfix profile-box">
@@ -27,9 +14,9 @@
                                 <!-- <span class="value">854</span>
                                 <span class="label">Followers</span> -->
                             </a>
-                            <a ui-sref="users">
+                            <a ui-sref="users({'idSystem': system.id})">
                                 <span class="value"><i class="fa fa-user fa-lg"></i></span>
-                                <span class="label">72 Usuários</span>
+                                <span class="label">{{ system.usersSize }}</span>
                             </a>
                             <a href="#">
                                 <!-- <span class="value">128</span>

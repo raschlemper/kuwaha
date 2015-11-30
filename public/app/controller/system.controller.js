@@ -90,7 +90,7 @@ app.controller('SystemCtrl', function($scope, $stateParams, SystemService, Syste
 
     var builderSystem = function(systems) {
         $scope.systems = _.map(systems, function(system) {
-            var system = SystemBuilder.createSystem(system);
+            var system = SystemBuilder.createWidgetSystem(system);
             system.color = getColor();
             return system;
         })

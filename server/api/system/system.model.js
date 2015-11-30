@@ -7,12 +7,24 @@ var Schema = mongoose.Schema;
 
 var SystemSchema = new Schema({
   name: String,
-  description: String
+  description: String,
+  users: [{
+    user: { type: Schema.Types.ObjectId, ref: 'User' }
+  }]
 });
 
 /**
  * Virtuals
  */
+SystemSchema
+  .virtual('systemData')
+  .get(function() {
+    return {
+      'name': this.name,
+      'description': this.description,
+      'users': this.users
+    }
+  });
  	
 
 /**

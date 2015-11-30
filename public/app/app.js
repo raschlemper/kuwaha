@@ -22,12 +22,17 @@ var app = angular.module('kuwaha', [
                 controller: 'SystemCtrl'
             })
             .state('systems', {
-                url: '/',
+                url: '/systems',
+                templateUrl: 'view/system.html',
+                controller: 'SystemCtrl'
+            })
+            .state('system', {
+                url: '/systems/:idSystem',
                 templateUrl: 'view/system.html',
                 controller: 'SystemCtrl'
             })
             .state('users', {
-                url: '/users',
+                url: '/systems/:idSystem/users',
                 templateUrl: 'view/user.html',
                 controller: 'UserCtrl'
             });
