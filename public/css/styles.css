@@ -130,7 +130,7 @@ a:hover, a:focus {
   position: relative;
   /*min-height: 1200px;*/
   padding: 15px 15px 35px 15px;
-  margin-left: 220px;
+  /*margin-left: 220px;*/
 }
 @media (max-width:991px) {
   #content-wrapper {
@@ -173,6 +173,7 @@ a:hover, a:focus {
   margin-bottom: 16px;
   border-radius: 3px;
   background-clip: padding-box;
+  cursor: pointer;
 }
 @media (max-width:767px) {
   .main-box {
@@ -4166,6 +4167,7 @@ input[type="radio"] {
   text-align: center;
   border-radius: 3px 3px 0 0;
   background-clip: padding-box;
+  cursor: pointer;
 }
 .profile-box .profile-img {
   border-radius: 18%;

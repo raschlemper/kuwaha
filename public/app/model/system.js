@@ -18,6 +18,13 @@ app.factory('System', function() {
 			system.usersSize = getSizeNameUser(obj.users);
 		}
 
+		system.createWidgetMenu = function(obj, value) {
+			system.id = obj._id;
+			system.name = obj.name;
+			system.description = obj.description;
+			system.values = { users: obj.users.length };
+		}
+
 		var getSizeNameUser = function(users) {
 			if(!users) return '0 Usuários ';
 			if(users.length > 1) { return users.length + ' Usuários'; }
