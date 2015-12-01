@@ -1,7 +1,8 @@
 app.run(['$rootScope', function ($rootScope) {
 
   	$rootScope.$on('$stateChangeStart', function(event, currentRoute, previousRoute) {
-  		console.log(currentRoute, previousRoute, getRoute(currentRoute, previousRoute));
+  		console.log(currentRoute, previousRoute);
+  		getRoute(currentRoute, previousRoute);
   	});
   	$rootScope.$on('$stateChangeSuccess', function(event, currentRoute, previousRoute) {
   		
@@ -17,7 +18,7 @@ app.run(['$rootScope', function ($rootScope) {
 	  		} else if(route === 'systems') { 
 	  			states.push({ name: 'Sistemas', state: 'systems' }); 
 	  		} else if(route === ':idSystem') { 
-	  			states.push({ name: previousRoute.idSystem, state: 'system', params: { idSystem: previousRoute.idSystem } }); 
+	  			states.push({ name: getSystemName(previousRoute.idSystem), state: 'system', params: { idSystem: previousRoute.idSystem } }); 
 	  		} else if(route === 'users') { 
 	  			states.push({ name: 'Usuários', state: 'users' }); 
 	  		}	
@@ -28,6 +29,13 @@ app.run(['$rootScope', function ($rootScope) {
 	  		}
 	  	});	
 		$rootScope.states = { 'title': title, 'routes': states };
+	}
+
+	var getSystemName = function(idSystem) {
+		var system = _.find($rootScope.systems, function(system){ 
+			return system.id == idSystem; 
+		});
+		return system.name;
 	}
 
 }]);

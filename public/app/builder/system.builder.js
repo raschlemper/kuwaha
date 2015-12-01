@@ -7,6 +7,13 @@ app.factory('SystemBuilder', function(System, LISTS) {
 		return obj;
 	}
 
+	var createScopeSystem = function(system) {
+		return {
+			id: system._id,
+			name: system.name
+		}
+	}
+
 	var createWidgetSystem = function(system) {
 		var obj = new System();
 		obj.createWidget(system);
@@ -21,6 +28,7 @@ app.factory('SystemBuilder', function(System, LISTS) {
 
 	return {
 		createSystemDefault: createSystemDefault,
+		createScopeSystem: createScopeSystem,
 		createWidgetSystem: createWidgetSystem,
 		createWidgetSystemMenu: createWidgetSystemMenu
 	}

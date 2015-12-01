@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('SystemCtrl', function($scope, $stateParams, SystemService, SystemBuilder, LISTS) {
+app.controller('SystemCtrl', function($rootScope, $scope, $stateParams, SystemService, SystemBuilder, LISTS) {
 
     var init = function() {
         $scope.systems = [];
@@ -19,7 +19,8 @@ app.controller('SystemCtrl', function($scope, $stateParams, SystemService, Syste
     $scope.getAllSystems = function() {
         SystemService.allSystems()
             .then(function(data) {
-                builderSystem(data);
+                builderSystemScope(data);
+                builderSystemWidget(data);
             })
             .catch(function() {
                 $scope.msg.error = 'MSG.USER.SEARCH.ERROR';                
@@ -81,7 +82,14 @@ app.controller('SystemCtrl', function($scope, $stateParams, SystemService, Syste
     //         });
     // };
 
-    var builderSystem = function(systems) {
+    var builderSystemScope = function(systems) {
+        $rootScope.systems = [];
+        _.map(systems, function(system) {
+            $rootScope.systems.push(SystemBuilder.createScopeSystem(system));
+        })
+    };
+
+    var builderSystemWidget = function(systems) {
         $scope.systems = _.map(systems, function(system) {
             var system = SystemBuilder.createWidgetSystem(system);
             return system;

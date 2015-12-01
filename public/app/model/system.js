@@ -7,8 +7,7 @@ app.factory('System', function() {
 		var system = {
 			id: null,
 			name: null,
-			description: null,
-			usersSize: null
+			description: null
 		}
 
 		system.createWidget = function(obj) {
@@ -18,7 +17,7 @@ app.factory('System', function() {
 			system.usersSize = getSizeNameUser(obj.users);
 		}
 
-		system.createWidgetMenu = function(obj, value) {
+		system.createWidgetMenu = function(obj) {
 			system.id = obj._id;
 			system.name = obj.name;
 			system.description = obj.description;
