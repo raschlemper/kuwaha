@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('SystemService', function($resource) {
+app.factory('SystemService', function($resource, $http, $q) {
 
     var SystemResource = $resource('/api/systems/:id', {
         id: '@id'
@@ -29,6 +29,22 @@ app.factory('SystemService', function($resource) {
                 function(err) {
                     return cb(err);
                 }).$promise;
+        },
+        getSystemUsers: function(id, callback) {
+            var cb = callback || angular.noop;
+            var deferred = $q.defer();
+
+            $http.get('/api/systems/'+id+'/users').
+            success(function(data) {
+                deferred.resolve(data);
+                return cb();
+            }).
+            error(function(err) {
+              deferred.reject(err);
+              return cb(err);
+            }.bind(this));
+
+            return deferred.promise;
         },
         createSystem: function(id, callback) {
             var cb = callback || angular.noop;

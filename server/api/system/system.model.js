@@ -7,13 +7,7 @@ var Schema = mongoose.Schema;
 
 var SystemSchema = new Schema({
   name: String,
-  description: String,
-  users: [{
-    user: { type: Schema.Types.ObjectId, ref: 'User' },
-    status: String,
-    group: String,
-    date: Date
-  }]
+  description: String
 });
 
 /**

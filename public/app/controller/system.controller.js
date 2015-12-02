@@ -10,11 +10,11 @@ app.controller('SystemCtrl', function($rootScope, $scope, $stateParams, SystemSe
         $scope.msg = { success: null, error: null };
     };
     
-    var resetForm = function(form, data) {
-        form.$setPristine();
-        $scope.submitted = false;
-        init(); 
-    };
+    // var resetForm = function(form, data) {
+    //     form.$setPristine();
+    //     $scope.submitted = false;
+    //     init(); 
+    // };
 
     $scope.getAllSystems = function() {
         SystemService.allSystems()

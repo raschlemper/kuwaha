@@ -34,7 +34,7 @@ var app = angular.module('kuwaha', [
             .state('users', {
                 url: '/systems/:idSystem/users',
                 templateUrl: 'view/users.html',
-                controller: 'UserCtrl'
+                controller: 'SystemUserCtrl'
             });
 
     })
