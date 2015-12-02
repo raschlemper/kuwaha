@@ -9,7 +9,10 @@ var SystemSchema = new Schema({
   name: String,
   description: String,
   users: [{
-    user: { type: Schema.Types.ObjectId, ref: 'User' }
+    user: { type: Schema.Types.ObjectId, ref: 'User' },
+    status: String,
+    group: String,
+    date: Date
   }]
 });
 

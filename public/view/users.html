@@ -19,7 +19,10 @@
                                 <th><span translate="LABEL.NAME"/></th>
                                 <th><span translate="LABEL.USERNAME"/></th>
                                 <th class="text-center"><span translate="LABEL.GENDER"/></th>
-                                <th><span translate="LABEL.EMAIL"/></th>                                
+                                <th><span translate="LABEL.EMAIL"/></th> 
+                                <th class="text-center"><span translate="LABEL.STATUS"/></th>
+                                <th class="text-center"><span translate="LABEL.GROUP"/></th>
+                                <th class="text-center"><span translate="LABEL.DATE"/></th>                               
                             </tr>
                         </thead>
                         <tbody>
@@ -29,6 +32,9 @@
                             <td>{{user.username}}</td>
                             <td class="text-center">{{user.gender | uppercase}}</td>
                             <td><a href="#">{{user.email}}</a></td>
+                            <td class="text-center">{{user.status | uppercase}}</td>
+                            <td class="text-center">{{user.group | uppercase}}</td>
+                            <td class="text-center">{{user.date | uppercase}}</td>
                             <!-- <td class="text-center">
                                 <span class="label label-default">Inactive</span>
                             </td> -->
