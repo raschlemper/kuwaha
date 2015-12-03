@@ -6,10 +6,7 @@ var controller = require('./system.controller');
 var router = express.Router();
 
 router.get('/', controller.index);
-router.post('/', controller.create);
-router.put('/:id', controller.change);
-router.get('/:id', controller.show);
-router.get('/:id/users', controller.showUsers);
-router.delete('/:id', controller.destroy);
+router.get('/:id', controller.show, controller.showUsers, controller.showFull);
+router.get('/:id/size', controller.show, controller.showUsers, controller.showSize);
 
 module.exports = router;

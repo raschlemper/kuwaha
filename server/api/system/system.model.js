@@ -18,8 +18,7 @@ SystemSchema
   .get(function() {
     return {
       'name': this.name,
-      'description': this.description,
-      'users': this.users
+      'description': this.description
     }
   });
  	

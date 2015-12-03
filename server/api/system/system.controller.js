@@ -9,8 +9,7 @@ var Access = require('../access/access.model');
  * Get list of systems
  */
 exports.index = function(req, res, next) {
-    System.find({})    
-    .exec(function(err, systems) {
+    System.find({}, function(err, systems) {
         if (err) return res.send(500, err);
         res.json(200, systems);
     });
@@ -21,57 +20,48 @@ exports.index = function(req, res, next) {
  */
 exports.show = function(req, res, next) {
     var systemId = req.params.id;
-    System.findById(systemId) 
-    .exec(function(err, system) {
+    System.findById(systemId, function(err, system) {
         if (err) return res.send(500, err);
         if (!system) return res.send(401);
-        res.json(200, system);
+        next(_.clone(system));
     });
 };
 
 /**
  * Get system user
  */
-exports.showUsers = function(req, res, next) {
+exports.showUsers = function(system, req, res, next) {
     var systemId = req.params.id;
-    Access.find({ 'system': systemId }) 
-    .deepPopulate('user system')
-    .exec(function(err, system) {
+    Access.find({ 'system': systemId })
+    .deepPopulate('user')
+    .exec(function(err, systemUser) {
         if (err) return res.send(500, err);
-        if (!system) return res.send(401);
-        res.json(200, system);
+        if (!systemUser) return res.send(401);
+        system.users = systemUser;
+        next(system);
     });
 };
 
 /**
- * Remove system
+ * Get system size
  */
-exports.destroy = function(req, res, next) {
-    var systemId = req.params.id;
-    System.findByIdAndRemove(systemId, function(err, system) {
-        if (err) return res.send(500, err);
-        return res.send(204);
+exports.showSize = function(system, req, res, next) {
+    res.json(200, { 
+        _id: system._id,
+        name: system.name,
+        size: {
+            user: system.users.length
+        }
     });
 };
 
 /**
- * Create system
+ * Get system size
  */
-exports.create = function(req, res, next) {
-    var newSystem = new System(req.body);
-    newSystem.save(function(err, system) {
-        if (err) return res.send(500, err);
-        res.json(200, system);
-    });   
-};
-
-/**
- * Change system
- */
-exports.change = function(req, res, next) {
-    var systemId = req.params.id;
-    System.findByIdAndUpdate(systemId, req.body, function(err, system) {
-      if(err) return res.send(500, err);
-      res.json(200, system);
+exports.showFull = function(system, req, res, next) {
+    res.json(200, { 
+        _id: system._id,
+        name: system.name,
+        users: system.users
     });
 };

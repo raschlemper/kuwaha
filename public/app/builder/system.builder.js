@@ -20,9 +20,9 @@ app.factory('SystemBuilder', function(System, LISTS) {
 		return obj;
 	}
 
-	var createWidgetSystemMenu = function(system) {
+	var createMenuSystem = function(system) {
 		var obj = new System();
-		obj.createWidgetMenu(system);
+		obj.createMenu(system);
 		return obj;
 	}
 
@@ -30,6 +30,6 @@ app.factory('SystemBuilder', function(System, LISTS) {
 		createSystemDefault: createSystemDefault,
 		createScopeSystem: createScopeSystem,
 		createWidgetSystem: createWidgetSystem,
-		createWidgetSystemMenu: createWidgetSystemMenu
+		createMenuSystem: createMenuSystem
 	}
 });

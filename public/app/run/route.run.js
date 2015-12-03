@@ -1,8 +1,8 @@
 app.run(['$rootScope', function ($rootScope) {
 
   	$rootScope.$on('$stateChangeStart', function(event, currentRoute, previousRoute) {
-  		console.log(currentRoute, previousRoute);
-  		getRoute(currentRoute, previousRoute);
+  		// console.log(currentRoute, previousRoute);
+  		// getRoute(currentRoute, previousRoute);
   	});
   	$rootScope.$on('$stateChangeSuccess', function(event, currentRoute, previousRoute) {
   		

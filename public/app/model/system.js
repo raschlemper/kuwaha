@@ -14,20 +14,12 @@ app.factory('System', function() {
 			system.id = obj._id;
 			system.name = obj.name;
 			system.description = obj.description;
-			system.usersSize = getSizeNameUser(obj.users);
 		}
 
-		system.createWidgetMenu = function(obj) {
+		system.createMenu = function(obj) {
 			system.id = obj._id;
 			system.name = obj.name;
-			system.description = obj.description;
-			system.values = { users: obj.users.length };
-		}
-
-		var getSizeNameUser = function(users) {
-			if(!users) return '0 Usuários ';
-			if(users.length > 1) { return users.length + ' Usuários'; }
-			return '1 Usuário';
+			system.values = {users : obj.users};
 		}
 
 		return system;

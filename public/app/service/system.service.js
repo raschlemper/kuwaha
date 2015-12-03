@@ -30,11 +30,11 @@ app.factory('SystemService', function($resource, $http, $q) {
                     return cb(err);
                 }).$promise;
         },
-        getSystemUsers: function(id, callback) {
+        getSystemSize: function(id, callback) {
             var cb = callback || angular.noop;
             var deferred = $q.defer();
 
-            $http.get('/api/systems/'+id+'/users').
+            $http.get('/api/systems/'+id+'/size').
             success(function(data) {
                 deferred.resolve(data);
                 return cb();

@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('SystemUserCtrl', function($scope, $stateParams, SystemService, UserBuilder, LISTS) {
+app.controller('SystemUserCtrl', function($rootScope, $scope, $stateParams, SystemService, LISTS) {
 
     var index;
     var colors;
@@ -13,85 +13,33 @@ app.controller('SystemUserCtrl', function($scope, $stateParams, SystemService, U
         $scope.getAllUsers(); 
         $scope.msg = { success: null, error: null };
     };
-    
-    // var resetForm = function(form, data) {
-    //     form.$setPristine();
-    //     $scope.submitted = false;
-    //     init(); 
-    // };
 
     $scope.getAllUsers = function() {
         if (!$stateParams.idSystem) return;
         $scope.users = [];
-        SystemService.getSystemUsers($stateParams.idSystem)
+        SystemService.getSystem($stateParams.idSystem)
             .then(function(data) {
-                builderUser(data);
+                builderUser(data.users);        
+                $rootScope.$broadcast('breadcrumb', {name: 'users', param: data});
             })
             .catch(function() {
                 $scope.msg.error = 'MSG.USER.SEARCH.ERROR';                
             });
     };
 
-    // $scope.getUser = function() {        
-    //     $scope.user = UserBuilder.createUserDefault();
-    //     if (!$stateParams.idUser) return;
-    //     UserService.getUser($stateParams.idUser)
-    //         .then(function(data) {
-    //             $scope.user = UserBuilder.createUser(data, null);
-    //         })
-    //         .catch(function() {
-    //             $scope.msg.error = 'MSG.USER.SEARCH.ERROR';
-    //         });
-    // };
-
-    // $scope.saveUser = function(form) {  
-    //     $scope.submitted = true;
-    //     if (form.$valid) {   
-    //         if(!$scope.user.id) { createUser(form); } 
-    //         else { updateUser(form); }            
-    //     } else {
-    //         $scope.msg.error = 'MSG.EXISTS.INCORRET.DATA';
-    //     }
-    // };
-
-    // var createUser = function(form) {  
-    //     UserService.createUser($scope.user)
-    //         .then(function(data) {
-    //             resetForm(form, null);
-    //             $scope.msg.success = 'MSG.USER.CREATE.SUCCESS';                
-    //         })
-    //         .catch(function() {
-    //             $scope.msg.error = 'MSG.USER.CREATE.ERROR';
-    //         });        
-    // };
-
-    // var updateUser = function(form) {  
-    //     UserService.updateUser($scope.user)
-    //         .then(function(data) {
-    //             resetForm(form, data);
-    //             $scope.msg.success = 'MSG.USER.UPDATE.SUCCESS';                
-    //         })
-    //         .catch(function() {
-    //             $scope.msg.error = 'MSG.USER.UPDATE.ERROR';
-    //         });        
-    // };
-
-    // $scope.removeUser = function(id) {
-    //     UserService.removeUser(id)
-    //         .then(function(data) {
-    //             init(); 
-    //             $scope.msg.success = 'MSG.USER.REMOVE.SUCCESS';                
-    //         })
-    //         .catch(function() {
-    //             $scope.msg.error = 'MSG.USER.SEARCH.ERROR';
-    //         });
-    // };
-
-    var builderUser = function(datas) {
-        $scope.users = _.map(datas, function(data) {
-            var user = UserBuilder.createUser(data.user);
-            user.color = getColor();
-            return user;
+    var builderUser = function(users) {
+        $scope.users = _.map(users, function(user) {
+            return {  
+                fullname: user.user.name + ' ' + user.user.lastname,
+                shortname: user.user.name.charAt(0) + user.user.lastname.charAt(0),
+                username: user.user.username,
+                gender: user.user.gender,              
+                email: user.user.email,              
+                status: user.status,              
+                group: user.group,              
+                date: user.date,              
+                color: getColor()
+            }
         })
     };
 
