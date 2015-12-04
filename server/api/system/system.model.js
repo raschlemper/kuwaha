@@ -13,14 +13,6 @@ var SystemSchema = new Schema({
 /**
  * Virtuals
  */
-SystemSchema
-  .virtual('systemData')
-  .get(function() {
-    return {
-      'name': this.name,
-      'description': this.description
-    }
-  });
  	
 
 /**

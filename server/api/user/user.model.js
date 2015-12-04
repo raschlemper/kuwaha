@@ -17,19 +17,6 @@ var UserSchema = new Schema({
 /**
  * Virtuals
  */
-UserSchema
-  .virtual('system')
-  .get(function() {
-    return {
-      'name': this.name,
-      'lastname': this.lastname,
-      'username': this.username,
-      'gender': this.gender,
-      'email': this.email,
-      'role': this.role,
-      'image': this.image
-    }
-  });
 
 
 /**

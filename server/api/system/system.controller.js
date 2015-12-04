@@ -3,7 +3,7 @@
 var compose = require('composable-middleware');
 var _ = require('underscore');
 var System = require('./system.model');
-var Access = require('../access/access.model');
+var accessCtrl = require('../access/access.controller');
 
 /**
  * Get list of systems
@@ -24,21 +24,6 @@ exports.show = function(req, res, next) {
         if (err) return res.send(500, err);
         if (!system) return res.send(401);
         next(_.clone(system));
-    });
-};
-
-/**
- * Get system user
- */
-exports.showUsers = function(system, req, res, next) {
-    var systemId = req.params.id;
-    Access.find({ 'system': systemId })
-    .deepPopulate('user')
-    .exec(function(err, systemUser) {
-        if (err) return res.send(500, err);
-        if (!systemUser) return res.send(401);
-        system.users = systemUser;
-        next(system);
     });
 };
 

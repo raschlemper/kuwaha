@@ -16,6 +16,21 @@ var AccessSchema = new Schema({
 /**
  * Virtuals
  */
+AccessSchema
+  .virtual('systemUser')
+  .get(function() {
+    return {
+    	'name': this.user.name,
+    	'fullname': this.user.name + ' ' + this.user.lastname,
+      'shortname': this.user.name.charAt(0) + this.user.lastname.charAt(0),
+      'username': this.user.username,
+      'gender': this.user.gender,              
+      'email': this.user.email,              
+      'status': this.status,              
+      'group': this.group,              
+      'date': this.date
+	}
+  });
  	
 
 /**

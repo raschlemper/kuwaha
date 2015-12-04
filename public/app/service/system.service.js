@@ -45,40 +45,6 @@ app.factory('SystemService', function($resource, $http, $q) {
             }.bind(this));
 
             return deferred.promise;
-        },
-        createSystem: function(id, callback) {
-            var cb = callback || angular.noop;
-            return SystemResource.save(user,
-                function(data) {
-                    return cb(data);
-                },
-                function(err) {
-                    return cb(err);
-                }).$promise;
-        },
-        updateSystem: function(user, callback) {
-            var cb = callback || angular.noop;
-            return SystemResource.update({ 
-                    id: user.id 
-                }, user,
-                function(data) {
-                    return cb(data);
-                },
-                function(err) {
-                    return cb(err);
-                }).$promise;
-        },
-        removeSystem: function(id, callback) {
-            var cb = callback || angular.noop;
-            return SystemResource.delete({
-                    id: id
-                },
-                function(data) {
-                    return cb(data);
-                },
-                function(err) {
-                    return cb(err);
-                }).$promise;
         }
 
     }

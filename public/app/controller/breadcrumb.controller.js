@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('BreadcrumbCtrl', function($rootScope, $scope, $stateParams, SystemService, SystemBuilder, LISTS) {
+app.controller('BreadcrumbCtrl', function($rootScope, $scope, $stateParams, LISTS) {
 
     $scope.$on('breadcrumb', function(events, args){
         if(args.name == 'home') getStateHome();

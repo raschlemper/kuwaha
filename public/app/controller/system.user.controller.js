@@ -7,7 +7,6 @@ app.controller('SystemUserCtrl', function($rootScope, $scope, $stateParams, Syst
 
     var init = function() {
         $scope.users = [];
-        $scope.user = {};
         index = 0;
         colors = _.shuffle(LISTS.colors);
         $scope.getAllUsers(); 
@@ -29,17 +28,8 @@ app.controller('SystemUserCtrl', function($rootScope, $scope, $stateParams, Syst
 
     var builderUser = function(users) {
         $scope.users = _.map(users, function(user) {
-            return {  
-                fullname: user.user.name + ' ' + user.user.lastname,
-                shortname: user.user.name.charAt(0) + user.user.lastname.charAt(0),
-                username: user.user.username,
-                gender: user.user.gender,              
-                email: user.user.email,              
-                status: user.status,              
-                group: user.group,              
-                date: user.date,              
-                color: getColor()
-            }
+            user.color = getColor();
+            return user;
         })
     };
 
