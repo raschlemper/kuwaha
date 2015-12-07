@@ -1,0 +1,20 @@
+Json Web Token
+http://www.toptal.com/web/cookie-free-authentication-with-json-web-tokens-an-example-in-laravel-and-angularjs
+
+Express JWT
+https://github.com/auth0/express-jwt
+
+Express Session
+https://github.com/expressjs/session
+
+Local Storage
+https://www.npmjs.com/package/node-localstorage
+
+Autenticação com Tokens Usando AngularJS & NodeJS
+http://code.tutsplus.com/pt/tutorials/token-based-authentication-with-angularjs-nodejs--cms-22543
+
+Como criar uma API RESTfull em NodeJS e autenticar usando JSON Web Token JWT?
+http://rcdevlabs.github.io/2015/02/12/como-criar-uma-api-restfull-em-nodejs-e-autenticar-usando-json-web-token-jwt/
+
+Authenticate a Node.js API with JSON Web Tokens
+https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens 
