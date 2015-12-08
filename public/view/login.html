@@ -13,14 +13,16 @@
                                     </div>
                                 </header>
                                 <div id="login-box-inner">
-                                    <form role="form" action="index.html">
-                                        <div class="input-group">
+                                    <form role="form" name="form" ng-submit="login(form)" novalidate>
+                                        <div class="input-group" ng-class="{ 'has-success': form.username.$valid && submitted,
+                                                                             'has-error': form.username.$invalid && submitted }">
                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                            <input class="form-control" type="text" name="username" placeholder="Username">
+                                            <input class="form-control" type="text" name="username" placeholder="Username" required>
+                                            <p class="help-block" ng-show="form.username.$error.required && submitted"><span translate="MSG.USER.NAME"/></p>
                                         </div>
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                            <input type="password" class="form-control" name="password" placeholder="Senha">
+                                            <input type="password" class="form-control" name="password" placeholder="Senha" required>
                                         </div>
                                         <!-- <div id="remember-me-wrapper">
                                             <div class="row">

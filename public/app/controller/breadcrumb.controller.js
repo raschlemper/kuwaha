@@ -13,7 +13,7 @@ app.controller('BreadcrumbCtrl', function($rootScope, $scope, $stateParams, LIST
         $scope.states = { 
             'title': 'Sistemas', 
             'routes': [
-                { name: 'Home', state: 'home' }
+                { name: 'Home', state: 'app.home' }
             ] 
         };
     }
@@ -22,8 +22,8 @@ app.controller('BreadcrumbCtrl', function($rootScope, $scope, $stateParams, LIST
         $scope.states = { 
             'title': system.name, 
             'routes': [
-                    { name: 'Home', state: 'home' },
-                    { name: 'Sistemas', state: 'systems' }
+                    { name: 'Home', state: 'app.home' },
+                    { name: 'Sistemas', state: 'app.systems' }
                  ] 
         };
     }
@@ -32,9 +32,9 @@ app.controller('BreadcrumbCtrl', function($rootScope, $scope, $stateParams, LIST
         $scope.states = { 
             'title': 'Usuários', 
             'routes': [
-                    { name: 'Home', state: 'home' },
-                    { name: 'Sistemas', state: 'systems' },
-                    { name: system.name, state: 'system', params: { idSystem: system._id } }
+                    { name: 'Home', state: 'app.home' },
+                    { name: 'Sistemas', state: 'app.systems' },
+                    { name: system.name, state: 'app.system', params: { idSystem: system._id } }
                  ] 
         };
     }

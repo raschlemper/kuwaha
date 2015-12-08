@@ -4,7 +4,7 @@
             <div class="col-lg-3 col-md-5 col-sm-6" ng-repeat="system in systems track by $index">
                 <div class="main-box clearfix profile-box">
                     <div class="main-box-body clearfix">
-                        <div class="profile-box-header" ui-sref="system({idSystem: system._id})" style="background-color: #90A4AE;">
+                        <div class="profile-box-header" ui-sref="app.system({idSystem: system._id})" style="background-color: #90A4AE;">
                             <img src="image/systems/psicologia.png" alt="" class="profile-img img-responsive center-block">
                             <h2>{{system.name}}</h2>
                             <div class="job-position">{{system.description}}</div>
@@ -14,7 +14,7 @@
                                 <!-- <span class="value">854</span>
                                 <span class="label">Followers</span> -->
                             </a>
-                            <a ui-sref="users({'idSystem': system.id})">
+                            <a ui-sref="app.users({'idSystem': system.id})">
                                 <span class="value"><i class="fa fa-user fa-lg"></i></span>
                                 <span class="label">{{ system.usersSize }}</span>
                             </a>
