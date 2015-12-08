@@ -22,7 +22,7 @@ User.find({}).remove(function() {
         username: 'raschlemper',
         email: 'raschlemper@gmail.com',
         gender: 'masculino',
-        password: 'admin'
+        password: '123456'
     }, function() {
         console.log('finished populating users');
     });

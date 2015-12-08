@@ -2,8 +2,6 @@
 
 app.controller('SystemCtrl', function($rootScope, $scope, $stateParams, SystemService, LISTS) {
 
-    
-
     var init = function() {
         $scope.systems = [];
         $scope.system = {};
