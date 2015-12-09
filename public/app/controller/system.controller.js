@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('SystemCtrl', function($rootScope, $scope, $stateParams, SystemService, LISTS) {
+app.controller('SystemCtrl', function($rootScope, $scope, $stateParams, localStorageService, SystemService, LISTS) {
 
     var init = function() {
         $scope.systems = [];
@@ -8,6 +8,7 @@ app.controller('SystemCtrl', function($rootScope, $scope, $stateParams, SystemSe
         getAllSystems(); 
         getSystem();
         $scope.msg = { success: null, error: null };
+        console.log(localStorageService.get('token'));
     };
 
     var getAllSystems = function() {

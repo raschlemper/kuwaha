@@ -1,8 +1,9 @@
-app.factory('authInterceptor', function() {
+app.factory('authInterceptor', ['$injector', function($injector) {
     return {
         responseError: function(rejection) {
-            if(response.status === 401) {
-                $state.go('auth.login');
+            if(rejection.status === 401) {
+                var stateService = $injector.get('$state');
+                stateService.go('auth.login');
                 //return $q.reject(rejection);
             } else {
                 //return $q.reject(rejection);
@@ -10,7 +11,7 @@ app.factory('authInterceptor', function() {
         }
     };
 
-});
+}]);
 
 app.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptor');

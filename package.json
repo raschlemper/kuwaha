@@ -34,7 +34,8 @@
     "underscore": "~1.8.3",
     "bcrypt-nodejs": "0.0.3",
     "jwt-simple": "^0.2.0",
-    "moment": "^2.9.0"
+    "moment": "^2.9.0",
+    "node-localstorage": "*"
   },
   "devDependencies": {},
   "bundleDependencies": [],

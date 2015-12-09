@@ -5,6 +5,7 @@ var jwt = require('jwt-simple')
 var moment = require('moment')
 var User = require('../user/user.model');
 var secret = 'teratec';
+var localStorage = require('localstorage');
 
 /**
  * Get list of systems
@@ -23,7 +24,11 @@ exports.login = function(req, res, next) {
       			iss: user.id,
       			exp: expires
     		}, secret);
-	        
+	     localStorage.setItem('token', {
+            token : token,
+            expires: expires,
+            user: user.toJSON()
+          });
      		return res.json({
       			token : token,
       			expires: expires,

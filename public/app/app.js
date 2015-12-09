@@ -8,6 +8,7 @@ var app = angular.module('kuwaha', [
         'ngTouch',
         'ui.router',
         'ui.bootstrap',
+        'LocalStorageModule',
         'pascalprecht.translate'
     ])
 
@@ -51,4 +52,10 @@ var app = angular.module('kuwaha', [
                 controller: 'LoginCtrl'
             });        
 
-    });
+    })
+
+    .config(function(localStorageServiceProvider) {      
+        localStorageServiceProvider
+            .setStorageType('sessionStorage')
+            .setPrefix('teratec');
+    })
