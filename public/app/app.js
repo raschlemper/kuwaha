@@ -20,7 +20,8 @@ var app = angular.module('kuwaha', [
         $stateProvider
 
             .state('app', {
-                templateUrl: 'view/app.html'
+                templateUrl: 'view/app.html',
+                controller: 'AppCtrl'
             })
             .state('app.home', {
                 url: '/',

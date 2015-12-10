@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('AuthService', function($http, $q) {
+app.factory('AuthService', function($http, $q, localStorageService) {
 
     return {
 
@@ -8,11 +8,12 @@ app.factory('AuthService', function($http, $q) {
             var cb = callback || angular.noop;
             var deferred = $q.defer();
 
-            $http.post('/api/auth/login', {
+            $http.post('/auth/local', {
             	'username': user.username,
             	'password': user.password
             }).
             success(function(data) {
+                localStorageService.set('token', data);
                 deferred.resolve(data);
                 return cb();
             }).
@@ -22,7 +23,13 @@ app.factory('AuthService', function($http, $q) {
             }.bind(this));
 
             return deferred.promise;
-        }
+        },
+          
+        logout: function() {
+            var deferred = $q.defer();
+            deferred.resolve(localStorageService.remove('token'));
+            return deferred.promise;
+        },
 
     }
 

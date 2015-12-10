@@ -33,9 +33,10 @@
     "body-parser": "~1.5.0",
     "underscore": "~1.8.3",
     "bcrypt-nodejs": "0.0.3",
-    "jwt-simple": "^0.2.0",
     "moment": "^2.9.0",
-    "node-localstorage": "*"
+    "passport": "~0.2.0",
+    "passport-local": "~0.1.6",
+    "jsonwebtoken": "^0.3.0"
   },
   "devDependencies": {},
   "bundleDependencies": [],
