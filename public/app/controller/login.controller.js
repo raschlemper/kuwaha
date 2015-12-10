@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('LoginCtrl', function($scope, $state, localStorageService, AuthService) {
+app.controller('LoginCtrl', function($scope, $state, AuthService) {
 
     var init = function() {
     };
@@ -9,7 +9,6 @@ app.controller('LoginCtrl', function($scope, $state, localStorageService, AuthSe
         if (form.$valid) { 
         	AuthService.login($scope.user)
                 .then(function(data) {
-                    // localStorageService.set('token', data);
                     $state.go('app.home');
                 })
                 .catch(function() {
