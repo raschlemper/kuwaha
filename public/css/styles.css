@@ -2683,6 +2683,9 @@ input[type="radio"] {
 #login-page {
     color: #212121;
     background: url("../../image/whitey.jpg") repeat scroll 0 0 #fff;
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 #login-page-full {
   background-color: #e7ebee;
