@@ -8,7 +8,6 @@ app.controller('SystemCtrl', function($rootScope, $scope, $stateParams, localSto
         getAllSystems(); 
         getSystem();
         $scope.msg = { success: null, error: null };
-        console.log(localStorageService.get('token'));
     };
 
     var getAllSystems = function() {

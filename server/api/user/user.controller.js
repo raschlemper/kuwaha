@@ -13,3 +13,15 @@ exports.index = function(req, res, next) {
         res.json(200, users);
     });
 };
+
+/**
+ * Get user
+ */
+exports.show = function(req, res, next) {
+    var userId = req.user._id;
+    User.findById(userId, '-password', function(err, user) {
+        if (err) return res.send(500, err);
+        if (!user) return res.send(401);
+        res.send(200, user);
+    });
+};

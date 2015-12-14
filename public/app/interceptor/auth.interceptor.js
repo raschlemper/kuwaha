@@ -6,7 +6,7 @@ app.factory('authInterceptor', ['$injector', '$q', 'localStorageService', functi
         request: function(config) {
             config.headers = config.headers || {};
             if (localStorageService.get('token')) {
-                config.headers.authorization = localStorageService.get('token');
+                config.headers.Authorization = 'Bearer ' + localStorageService.get('token');
             }
           return config;
         },

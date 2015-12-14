@@ -13,7 +13,7 @@ app.factory('AuthService', function($http, $q, localStorageService) {
             	'password': user.password
             }).
             success(function(data) {
-                localStorageService.set('token', data);
+                localStorageService.set('token', data.token);
                 deferred.resolve(data);
                 return cb();
             }).
@@ -28,6 +28,23 @@ app.factory('AuthService', function($http, $q, localStorageService) {
         logout: function() {
             var deferred = $q.defer();
             deferred.resolve(localStorageService.remove('token'));
+            return deferred.promise;
+        },
+
+        authenticate: function(callback) {
+            var cb = callback || angular.noop;
+            var deferred = $q.defer();
+
+            $http.get('/auth/authenticate')
+                .success(function(data) {
+                    deferred.resolve(data);
+                    return cb();
+                })
+                .error(function(err) {
+                  deferred.reject(err);
+                  return cb(err);
+                }.bind(this));
+
             return deferred.promise;
         },
 
