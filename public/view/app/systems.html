@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-3 col-md-5 col-sm-6" ng-repeat="system in systems track by $index">
+                <div class="main-box clearfix profile-box">
+                    <div class="main-box-body clearfix">
+                        <div class="profile-box-header" ui-sref="app.system({idSystem: system._id})" style="background-color: #90A4AE;">
+                            <img src="image/systems/psicologia.png" alt="" class="profile-img img-responsive center-block">
+                            <h2>{{system.name}}</h2>
+                            <div class="job-position">{{system.description}}</div>
+                        </div>
+                        <div class="profile-box-footer clearfix hidden">
+                            <a href="#">
+                                <!-- <span class="value">854</span>
+                                <span class="label">Followers</span> -->
+                            </a>
+                            <a ui-sref="app.users({'idSystem': system.id})">
+                                <span class="value"><i class="fa fa-user fa-lg"></i></span>
+                                <span class="label">{{ system.usersSize }}</span>
+                            </a>
+                            <a href="#">
+                                <!-- <span class="value">128</span>
+                                <span class="label">Friends</span> -->
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-5 col-sm-6 hidden" ng-repeat="system in systems track by $index">
+                <div class="main-box clearfix profile-box-menu">
+                    <div class="main-box-body clearfix">
+                        <div class="profile-box-header green-bg clearfix">
+                            <img src="image/systems/psicologia.png" alt="" class="profile-img img-responsive">
+                            <h2>{{system.name}}</h2>
+                            <div class="job-position">{{system.description}}</div>
+                        </div>
+                        <div class="profile-box-content clearfix">
+                            <ul class="menu-items">
+                                <li>
+                                    <a href="#" class="clearfix">
+                                        <i class="fa fa-bell-o fa-lg"></i> New notifications
+                                        <span class="label label-danger label-circle pull-right">82</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="clearfix">
+                                        <i class="fa fa-user fa-lg"></i> Edit profile
+                                        <span class="label label-success label-circle pull-right">13</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="clearfix">
+                                        <i class="fa fa-calendar fa-lg"></i> Calendar
+                                        <span class="label label-warning label-circle pull-right">12</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="clearfix">
+                                        <i class="fa fa-envelope fa-lg"></i> New message
+                                        <span class="label label-primary label-circle pull-right">44</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

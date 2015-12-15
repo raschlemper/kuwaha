@@ -1,0 +1,78 @@
+<div id="login-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div id="login-box">
+                    <div id="login-box-holder">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <header id="login-header">
+                                    <div id="login-logo">
+                                        <!-- <img src="img/logo.png" alt=""> -->
+                                        <i class="fa fa-share-alt-square"></i><strong> KUWAHA</strong>
+                                    </div>
+                                </header>
+                                <div id="login-box-inner">
+                                    <form role="form" name="form" ng-submit="login(form)" novalidate>
+                                        <div class="input-group" ng-class="{ 'has-success': form.username.$valid && submitted,
+                                                                             'has-error': form.username.$invalid && submitted }">
+                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                            <input class="form-control" type="text" name="username" ng-model="user.username" placeholder="Username" required>
+                                            <p class="help-block" ng-show="form.username.$error.required && submitted"><span translate="MSG.USER.NAME"/></p>
+                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                            <input type="password" class="form-control" name="password" ng-model="user.password" placeholder="Senha" required>
+                                        </div>
+                                        <!-- <div id="remember-me-wrapper">
+                                            <div class="row">
+                                                <div class="col-xs-6">
+                                                    <div class="checkbox-nice">
+                                                        <input type="checkbox" id="remember-me" checked="checked">
+                                                        <label for="remember-me">
+                                                            Remember me
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <a href="forgot-password.html" id="login-forget-link" class="col-xs-6">Forgot password?</a>
+                                            </div>
+                                        </div> -->
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <button type="submit" class="btn btn-success col-xs-12">Entrar</button>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="social-text">Or login with</p>
+                                            </div>
+                                        </div> -->
+                                        <!-- <div class="row">
+                                            <div class="col-xs-12 col-sm-6">
+                                                <button type="submit" class="btn btn-primary col-xs-12 btn-facebook">
+                                                    <i class="fa fa-facebook"></i> facebook
+                                                </button>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6">
+                                                <button type="submit" class="btn btn-primary col-xs-12 btn-twitter">
+                                                    <i class="fa fa-twitter"></i> Twitter
+                                                </button>
+                                            </div>
+                                        </div> -->
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div id="login-box-footer">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                Do not have an account?<a href="registration.html">Register now</a>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
