@@ -27,8 +27,7 @@ app.config(function($urlRouterProvider, $stateProvider) {
             url: '/systems/:idSystem',
             templateUrl: 'view/system.html',
             controller: 'SystemCtrl',
-            authenticate: true,
-            roles: ['user']
+            authenticate: true
         })
         .state('app.users', {
             url: '/systems/:idSystem/users',

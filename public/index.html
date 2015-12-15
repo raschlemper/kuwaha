@@ -14,14 +14,23 @@
  	
  	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
  	<link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.css">
- 	<link rel="stylesheet" type="text/css" href="css/styles.css"> 
+    <link rel="stylesheet" type="text/css" href="css/styles.css"> 
+ 	<link rel="stylesheet" type="text/css" href="css/loading.css"> 
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300">
  
 </head>
 
 <body ng-app="kuwaha">
 
-	<span ui-view=""></span>
+    <span ng-show="loading">
+        <div class='loading'>
+            <div class='bullet'></div>
+            <div class='bullet'></div>
+            <div class='bullet'></div>
+            <div class='bullet'></div>
+        </div>
+    </span>
+	<span ng-hide="loading" ui-view=""></span>
     
     <script src="bower_components/jquery/dist/jquery.js" type="text/javascript"></script>
     <script src="bower_components/angular/angular.js" type="text/javascript"></script>
