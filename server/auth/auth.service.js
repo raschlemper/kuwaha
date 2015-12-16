@@ -17,8 +17,11 @@ exports.signToken = function(id, role) {
 }
 
 exports.isAuthenticated = function(req, res, next) {
+	console.log(req.query, req.query.access_token);
 	if (req.query && req.query.hasOwnProperty('access_token')) {
         req.headers.authorization = 'Bearer ' + req.query.access_token;
+    	validateJwt(req, res, next);
+    } else {    	
+    	res.status(401).send("not authorized");
     }
-    validateJwt(req, res, next);
 }

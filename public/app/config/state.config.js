@@ -20,6 +20,7 @@ app.config(function($provide, $stateProvider) {
                         // else if (_.contains(state.roles, 'user')) return data;
                         else $state.go('app.home');
                     }).catch(function(err) {
+                        AuthService.logout();
                         $q.reject('not authorized');
                     });
             }

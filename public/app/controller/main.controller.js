@@ -20,12 +20,11 @@ app.controller('MainCtrl', function($scope, $state, AuthService) {
     }
 
     $scope.logout = function(form) { 
-    	AuthService.logout($scope.user)
+    	AuthService.logout()
             .then(function(data) {
-                $state.go('auth.login');
-            })
-            .catch(function() {              
-            });
+                // $state.go('auth.login');
+             })
+            .catch(function() { });
     }
     
     init();

@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('AuthService', function($http, $q, localStorageService) {
+app.factory('AuthService', function($rootScope, $http, $q, $state, localStorageService) {
 
     return {
 
@@ -27,7 +27,10 @@ app.factory('AuthService', function($http, $q, localStorageService) {
           
         logout: function() {
             var deferred = $q.defer();
-            deferred.resolve(localStorageService.remove('token'));
+            localStorageService.remove('token');                
+            $rootScope.currentUser = null;
+            $rootScope.loading = false;
+            $state.go('auth.login');
             return deferred.promise;
         },
 
@@ -41,8 +44,8 @@ app.factory('AuthService', function($http, $q, localStorageService) {
                     return cb();
                 })
                 .error(function(err) {
-                  deferred.reject(err);
-                  return cb(err);
+                    deferred.reject(err);
+                    return cb(err);
                 }.bind(this));
 
             return deferred.promise;

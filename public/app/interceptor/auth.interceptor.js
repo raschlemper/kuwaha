@@ -1,6 +1,7 @@
 'use strict';
 
-app.factory('authInterceptor', ['$injector', '$q', 'localStorageService', function($injector, $q, localStorageService) {
+app.factory('authInterceptor', ['$q', 'localStorageService', '$injector', 
+    function($q, localStorageService, $injector) {
     return {
         // Add authorization token to headers
         request: function(config) {
@@ -11,10 +12,8 @@ app.factory('authInterceptor', ['$injector', '$q', 'localStorageService', functi
           return config;
         },
         responseError: function(rejection) {
-            if(rejection.status === 401) {
-                var stateService = $injector.get('$state');
-                stateService.go('auth.login');
-                localStorageService.remove('token');
+            if(rejection.status === 401) {                
+                $injector.get('AuthService').logout();
                 return $q.reject(rejection);
             } else {
                 return $q.reject(rejection);

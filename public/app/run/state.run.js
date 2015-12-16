@@ -10,4 +10,14 @@ app.run(['$rootScope', '$timeout', function ($rootScope, $timeout) {
             $rootScope.loading = false;
         // }, 1000);
     });
+    $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams) {
+        // $timeout( function(){ 
+            $rootScope.loading = false;
+        // }, 1000);
+    });
+    $rootScope.$on('$stateNotFound', function(event, toState, toParams, fromState, fromParams) {
+        // $timeout( function(){ 
+            $rootScope.loading = false;
+        // }, 1000);
+    });
 }]);

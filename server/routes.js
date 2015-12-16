@@ -16,7 +16,7 @@ module.exports = function(app) {
   // All other routes should redirect to the index.html
 
   // para todas as rotas
-  app.all('/api/', auth.isAuthenticated);//.unless({path: ['/token']}));
+  app.all('/api/*', auth.isAuthenticated);//.unless({path: ['/token']}));
 
   app.route('/*')
     .get(function(req, res) {
